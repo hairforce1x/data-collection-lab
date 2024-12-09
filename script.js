@@ -22,3 +22,22 @@ let dataObjects = cachedArray.slice(1).map(function (row) {
     return obj;
 })
 
+// Remove the last element from the sorted array.
+// Insert the following object at index 1:
+newObj = { id: "48", name: "Barry", occupation: "Runner", age: "25" }
+// Add the following object to the end of the array:
+endObj = { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+
+let partFourArray = dataObjects.splice(-1);
+dataObjects.splice(1,0,newObj);
+dataObjects.push(endObj);
+
+let allAges = 0;
+for (let i=0;i<dataObjects.length;i++) {
+    allAges+=dataObjects[i].age;
+    console.log(allAges)
+}
+
+
+
+    // console.log(Object.values(dataObjects[0]));
