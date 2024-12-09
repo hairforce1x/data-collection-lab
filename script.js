@@ -50,9 +50,4 @@ for (let i = 0; i < dataObjects.length; i++) {
     finalRows.push(row);
 }
 
-// let final = rows.toString();
-//  console.log(final)
-const newcsv = [finalHeaders].concat(rows).join("\n")
-
-console.log(csv);
-console.log(newcsv);
+const newcsv = [finalHeaders].concat(finalRows).join("\n")
