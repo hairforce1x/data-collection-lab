@@ -7,7 +7,6 @@ for (let i = 0; i < strToArray.length; i++) {
     cachedArray.push(row);
 }
 
-
 // For each row of data in the result array produced by your code above, create an object where the key of each value is the heading for that value’s column.
 // Convert these keys to all lowercase letters for consistency.
 // Store these objects in an array, in the order that they were originally listed.
@@ -15,8 +14,8 @@ for (let i = 0; i < strToArray.length; i++) {
 
 let headers = cachedArray[0].toString().toLowerCase().split(",");
 let dataObjects = cachedArray.slice(1).map(function (row) {
-    let obj={};
-   row.forEach(function(value, index) {
+    let obj = {};
+    row.forEach(function (value, index) {
         obj[headers[index]] = value;
     });
     return obj;
@@ -27,17 +26,33 @@ let dataObjects = cachedArray.slice(1).map(function (row) {
 newObj = { id: "48", name: "Barry", occupation: "Runner", age: "25" }
 // Add the following object to the end of the array:
 endObj = { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+// Finally, use the values of each object within the array and the array’s length property to calculate the average age of the group. This calculation should be accomplished using a loop.
 
 let partFourArray = dataObjects.splice(-1);
-dataObjects.splice(1,0,newObj);
+dataObjects.splice(1, 0, newObj);
 dataObjects.push(endObj);
 
 let allAges = 0;
-for (let i=0;i<dataObjects.length;i++) {
-    allAges+=dataObjects[i].age;
-    console.log(allAges)
+for (let i = 0; i < dataObjects.length; i++) {
+    allAges += Number(dataObjects[i].age);
 }
 
+let averageAge = allAges / dataObjects.length;
 
+// As a final task, transform the final set of data back into CSV format.
+// There are a number of ways to do this; be creative!
+// Once complete, be sure to submit your work according to the submission instructions at the beginning of this document.
+let finalHeaders = Object.keys(dataObjects[0]).join(",");
+let finalRows = []
 
-    // console.log(Object.values(dataObjects[0]));
+for (let i = 0; i < dataObjects.length; i++) {
+    let row = Object.values(dataObjects[i]).join(",");
+    finalRows.push(row);
+}
+
+// let final = rows.toString();
+//  console.log(final)
+const newcsv = [finalHeaders].concat(rows).join("\n")
+
+console.log(csv);
+console.log(newcsv);
